@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            border: 1px solid;
+            border-color: blue;
+        }
+    </style>
+</head>
+<body>
+        <img src="a1/a1_p1.jpg" id="p1" height="150" alt="" onclick="changeImg(this)"/><br>
+        <img src="a2/a2_p1.jpg" id="p2" height="150" alt="" onclick="changeImg(this)"/><br>
+        <img src="a3/a3_p1.jpg" id="p3" height="150" alt="" onclick="changeImg(this)"/>
+    <script>
+        function changeImg(a) {
+            let idElm = a.getAttribute("id");
+            let nameImg = Math.floor(Math.random()*3+1);
+            let partImg = "a" + nameImg + "/a" + nameImg +"_" + idElm + ".jpg";
+            a.setAttribute("src", partImg);
+            checkWin();
+        }
+        function checkWin() {
+            let p1 = document.getElementById("p1").getAttribute("src").substr(0, 2);
+            let p2 = document.getElementById("p2").getAttribute("src").substr(0, 2);
+            let p3 = document.getElementById("p3").getAttribute("src").substr(0, 2);
+            if (p1==p2 && p2==p3) {
+                document.getElementById('p1').style.borderColor = "red" ;
+                document.getElementById('p2').style.borderColor = "red" ;
+                document.getElementById('p3').style.borderColor = "red" ;
+            }
+        }
+    </script>
+</body>
+</html>
